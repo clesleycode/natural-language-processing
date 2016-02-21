@@ -38,8 +38,11 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
     + [4.3 ](#43-)
 - [5.0 ](#50-)
 - [6.0 Sentiment Analysis](#60-sentiment-analysis)
-    + [6.1 Building a Classifier](#61-building-a-classifier)
-    + [6.2 Classification](#62-classification)
+    + [6.1 Preparing the Data](#61-preparing-the-data)
+        * [6.1.1 Training Data](#611-training-data)
+        * [6.1.2 Test Data](#612-test-data)
+    + [6.2 Building a Classifier](#62-building-a-classifier)
+    + [6.3 Classification](#63-classification)
 
 
 ## 0.0 Setup
@@ -51,6 +54,8 @@ This guide was written in Python 2.7.
 Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.continuum.io/anaconda/install). 
 
 ### 0.2 Libraries
+
+We'll be working with the re library for regular expressions and nltk for natural language processing techniques, so make sure to install them! Lastly, we'll be doing a few visualizations in matplotlib. To install these libraries, enter the following commands into your terminal: 
 
 ``` 
 conda install nltk
@@ -72,11 +77,11 @@ Now you're all set to begin!
 
 ### 1.1 What is NLP? 
 
-Natural Language Processing, or NLP, is an area of computer science that focuses on developing techniques used to produce machine-driven analyses of text.
+Natural Language Processing, or NLP, is an area of computer science that focuses on developing techniques to produce machine-driven analyses of text.
 
 ### 1.2 Why is Natural Language Processing Important? 
 
-NLP expands the sheer amount of data that can be used for insight purposes, since so much of the data we have available is in the form of text.
+NLP expands the sheer amount of data that can be used for insight. Since so much of the data we have available is in the form of text, this is extremely important to data science!
 
 A specific common application of NLP is each time you use a language conversion tool. The techniques used to accurately convert text from one language to another very much falls under the umbrella of "natural language processing."
 
@@ -349,9 +354,17 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 
 ## 6.0 Sentiment Analysis  
 
+Before now, we've ran a few lines of code to play around with some textual data. But now we'll write some code to perform sentiment analysis on some tweets. 
 
+### 6.1 Preparing the Data 
 
-### 6.1 Building a Classifier
+To accomplish sentiment analysis computationally, we have to use techniques that will allow us to learn from data that's already been labeled. 
+
+#### 6.1.1 Training Data
+
+#### 6.1.2 Test Data
+
+### 6.2 Building a Classifier
 
 
 ```python
@@ -374,7 +387,7 @@ def get_features(words):
 
 
 
-### 6.2 Classification
+### 6.3 Classification
 
 ```python
 
