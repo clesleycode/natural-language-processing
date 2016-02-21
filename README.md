@@ -6,11 +6,11 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
-    + [0.1 Python and Anaconda](#01-python-and-anaconda)
+    + [0.1 Python and Anaconda](#01-python--anaconda)
     + [0.2 Libraries](#02-libraries)
     + [0.3 Other](#03-other)
 - [1.0 Background](#10-background)
-    + [1.1 What is NLP?](#11-nlp)
+    + [1.1 What is NLP?](#11-what-is-nlp)
     + [1.2 Why is NLP Important?](#12-why-is-nlp-importance)
     + [1.3 Why is NLP a "hard" problem?](#13-why-is-nlp-a-hard-problem)
 - [2.0 Regular Expressions](#20-regular-expressions)
@@ -22,17 +22,16 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
     + [2.6 Question Marks](#26-question-marks) 
     + [2.7 Kleene Star](#27-kleene-star) 
     + [2.8 Wildcards](#28-wildcards) 
-    + [2.9 Kleene+](#29-kleene+) 
-- [3.0 Word Tagging and Models](#30-word-tagging-and-models)
+    + [2.9 Kleene+](#29-kleene) 
+- [3.0 Word Tagging and Models](#30-word-tagging--models)
     + [3.1 NLTK Parts of Speech Tagger](#31-nltk-parts-of-speech-tagger)
         * [3.1.1 Ambiguity](#311-ambiguity)
-    + [3.1 Unigram Models](#31-unigram-models)
-    + [3.2 Bigram Models](#32-bigram-models)
-    + [3.3 ](#33-)
+    + [3.2 Unigram Models](#32-unigram-models)
+    + [3.3 Bigram Models](#33-bigram-models)
 - [4.0 Normalizing Text](#40-normalizing-text)
     + [4.1 Stemming](#41-stemming)
         * [4.1.1 What is Stemming?](#411-what-is-stemming)
-        * [4.2.2 Types of Stemmers](#422-types-of-stemmers)
+        * [4.1.2 Types of Stemmers](#412-types-of-stemmers)
     + [4.2 Lemmatization](#42-lemmatization)
         * [4.2.1 What is Lemmatization?](#421-what-is-lemmatization)
         * [4.2.2 WordNetLemmatizer?](#422-wordnetlemmatizer)
@@ -49,6 +48,7 @@ This guide was written in Python 2.7.
 
 ### 0.1 Python & Anaconda
 
+Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.continuum.io/anaconda/install). 
 
 ### 0.2 Libraries
 
@@ -64,6 +64,8 @@ Since we'll be working on textual analysis, we'll be using datasets that are alr
 ```
 sudo python -m nltk.downloader all
 ```
+
+Now you're all set to begin!
 
 ## 1.0 Background
 
@@ -384,15 +386,6 @@ print classifier.classify(extract_features(example.split()))
 
 
 
-## License
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0;float:right" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 
-[jinja-blocks]: http://jinja.pocoo.org/docs/dev/templates/#template-inheritance
-[blueprints]: http://flask.pocoo.org/docs/0.10/blueprints/
-[flask]: http://flask.pocoo.org/ 
-[pip]: https://pip.pypa.io/en/latest/installing.html
-[mongoengine]: http://docs.mongoengine.org/index.html
-[mongodb]: https://www.mongodb.org/
-[flask-mongoengine]: http://flask-mongoengine.readthedocs.org/en/latest/
-[intro-flask]: http://learn.adicu.com/webdev/
