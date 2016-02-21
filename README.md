@@ -1,49 +1,51 @@
 Intro to Natural Language Processing
 ==================
 
-By [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com)
+Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com)
 
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
-+ [0.1 Python & Anaconda](#01-python-conda)
-+ [0.2 Libraries](#02-libraries)
-+ [0.3 Other](#03-other)
+    + [0.1 Python and Anaconda](#01-python-and-anaconda)
+    + [0.2 Libraries](#02-libraries)
+    + [0.3 Other](#03-other)
 - [1.0 Background](#10-background)
-+ [1.1 What is NLP?](#11-nlp)
-+ [1.2 Why is Natural Language Processing Important?](#12-importance)
-+ [1.3 Why is NLP a "hard" problem?](#13-hard-prob)
+    + [1.1 What is NLP?](#11-nlp)
+    + [1.2 Why is NLP Important?](#12-why-is-nlp-importance)
+    + [1.3 Why is NLP a "hard" problem?](#13-why-is-nlp-a-hard-problem)
 - [2.0 Regular Expressions](#20-regular-expressions)
-+ [2.1 Simplest Form](#21-simplest-form)
-+ [2.2 Case Sensitivity](#22-case-sensitivity)
-+ [2.3 Disjunctions](#23-disjunctions) 
-+ [2.4 Ranges](#24-ranges) 
-+ [2.5 Exclusions](#25-exclusions) 
-+ [2.6 Question Marks](#26-question-marks) 
-+ [2.7 Kleene Star](#27-kleene-star) 
-+ [2.8 Wildcards](#28-wildcards) 
-+ [2.9 Kleene+](#29-kleene-plus) 
-- [3.0 Word Tagging & Models](#30-word-tagging-models)
-+ [3.1 NLTK Parts of Speech Tagger](#31-nltk-pos-tagger)
-* [3.1.1 Ambiguity](#311-ambiguity)
-+ [3.1 Unigram Models](#31-unigram)
-+ [3.2 Bigram Models](#32-bigram)
-+ [3.3 ](#33-)
-- [4.0 Normalizing Text](#40-normalizing)
-+ [4.1 Stemming](#41-stemming)
-* [4.1.1 What is Stemming?](#411-what-is-stemming)
-+ [4.2 Lemmatization](#42-lemmatization)
-* [4.2.1 What is Lemmatization?](#421-what-is-lemmatization)
-+ [4.3 ](#43-)
+    + [2.1 Simplest Form](#21-simplest-form)
+    + [2.2 Case Sensitivity](#22-case-sensitivity)
+    + [2.3 Disjunctions](#23-disjunctions) 
+    + [2.4 Ranges](#24-ranges) 
+    + [2.5 Exclusions](#25-exclusions) 
+    + [2.6 Question Marks](#26-question-marks) 
+    + [2.7 Kleene Star](#27-kleene-star) 
+    + [2.8 Wildcards](#28-wildcards) 
+    + [2.9 Kleene+](#29-kleene+) 
+- [3.0 Word Tagging and Models](#30-word-tagging-and-models)
+    + [3.1 NLTK Parts of Speech Tagger](#31-nltk-parts-of-speech-tagger)
+        * [3.1.1 Ambiguity](#311-ambiguity)
+    + [3.1 Unigram Models](#31-unigram-models)
+    + [3.2 Bigram Models](#32-bigram-models)
+    + [3.3 ](#33-)
+- [4.0 Normalizing Text](#40-normalizing-text)
+    + [4.1 Stemming](#41-stemming)
+        * [4.1.1 What is Stemming?](#411-what-is-stemming)
+        * [4.2.2 Types of Stemmers](#422-types-of-stemmers)
+    + [4.2 Lemmatization](#42-lemmatization)
+        * [4.2.1 What is Lemmatization?](#421-what-is-lemmatization)
+        * [4.2.2 WordNetLemmatizer?](#422-wordnetlemmatizer)
+    + [4.3 ](#43-)
 - [5.0 ](#50-)
 - [6.0 Sentiment Analysis](#60-sentiment-analysis)
-+ [6.1 Building a Classifier](#61-classifier)
-+ [6.2 Classificatio](#62-classification)
+    + [6.1 Building a Classifier](#61-building-a-classifier)
+    + [6.2 Classification](#62-classification)
 
 
 ## 0.0 Setup
 
-This guide was written in Python 2.7 and assumes such.
+This guide was written in Python 2.7.
 
 ### 0.1 Python & Anaconda
 
@@ -61,13 +63,12 @@ conda install matplotlib
 Since we'll be working on textual analysis, we'll be using datasets that are already well established and widely used. To gain access to these datasets, enter the following command into your command line: 
 ```
 sudo python -m nltk.downloader all
-
 ```
 
-## 1.0 Natural Language Processing
+## 1.0 Background
 
 
-### 1.1 What is Natural Language Processing? 
+### 1.1 What is NLP? 
 
 Natural Language Processing, or NLP, is an area of computer science that focuses on developing techniques used to produce machine-driven analyses of text.
 
@@ -322,8 +323,23 @@ Notice how "natural" maps to "natur" instead of "nat" and "really" maps to "real
 
 Lemmatization is the process of converting the words of a sentence to its dictionary form. For example, given the words amusement, amusing, and amused, the lemma for each and all would be amuse.
 
-#### 4.2.2
+#### 4.2.2 WordNetLemmatizer
 
+Once again, NLTK is awesome and has a built in lemmatizer for us to use: 
+
+``` python
+from nltk import WordNetLemmatizer
+
+lemma = nltk.WordNetLemmatizer()
+text = "Women in technology are amazing at coding"
+ex = [i.lower() for i in text.split()]
+
+lemmas = [lemma.lemmatize(i) for i in ex]
+```
+
+``` 
+['woman', 'in', 'technology', 'are', 'amazing', 'at', 'coding']
+```
 
 ## 5.0 
 
