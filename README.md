@@ -360,13 +360,15 @@ Before now, we've ran a few lines of code to play around with some textual data.
 
 To accomplish sentiment analysis computationally, we have to use techniques that will allow us to learn from data that's already been labeled. 
 
+So what's the first step? Splitting labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
+
 #### 6.1.1 Training Data
 
 #### 6.1.2 Test Data
 
 ### 6.2 Building a Classifier
 
-
+#### 6.2.1 Features 
 ```python
 
 def get_words(tweets):
@@ -385,7 +387,26 @@ def get_features(words):
     return features
 ```
 
+#### 6.2.2 Feature Extraction
 
+``` python
+def extract_features(document):
+    document_words = set(document)
+    features = {}
+    for word in word_features:
+        features['contains(%s)' % word] = (word in document_words)
+    return features
+```
+
+``` python
+training_set = nltk.classify.apply_features(extract_features, tweets)
+```
+
+#### 6.2.3 Training the Classifier
+
+``` python
+classifier = nltk.NaiveBayesClassifier.train(training_set)
+```
 
 ### 6.3 Classification
 
