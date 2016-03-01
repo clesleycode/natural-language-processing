@@ -36,13 +36,12 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
         * [4.2.1 What is Lemmatization?](#421-what-is-lemmatization)
         * [4.2.2 WordNetLemmatizer?](#422-wordnetlemmatizer)
     + [4.3 ](#43-)
-- [5.0 ](#50-)
-- [6.0 Sentiment Analysis](#60-sentiment-analysis)
-    + [6.1 Preparing the Data](#61-preparing-the-data)
-        * [6.1.1 Training Data](#611-training-data)
-        * [6.1.2 Test Data](#612-test-data)
-    + [6.2 Building a Classifier](#62-building-a-classifier)
-    + [6.3 Classification](#63-classification)
+- [5.0 Sentiment Analysis](#50-sentiment-analysis)
+    + [5.1 Preparing the Data](#51-preparing-the-data)
+        * [5.1.1 Training Data](#511-training-data)
+        * [5.1.2 Test Data](#512-test-data)
+    + [5.2 Building a Classifier](#52-building-a-classifier)
+    + [5.3 Classification](#53-classification)
 
 
 ## 0.0 Setup
@@ -352,23 +351,31 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 
 ### 5.1
 
-## 6.0 Sentiment Analysis  
+## 5.0 Sentiment Analysis  
 
 Before now, we've ran a few lines of code to play around with some textual data. But now we'll write some code to perform sentiment analysis on some tweets. 
 
-### 6.1 Preparing the Data 
+So you might be asking, what exactly is "sentiment analysis"? 
+
+Well, sentiment analysis involves building a system to collect and determine the emotional tone behind words. This is important because it allows you to gain an understanding of the attitudes, opinions and emotions of the people in your data. 
+
+At a high level, sentiment analysis involves Natural language processing and artificial intelligence by taking the actual text element, transforming it into a format that machine can read, and using statistics to determine the actual sentiment.
+
+### 5.1 Preparing the Data 
 
 To accomplish sentiment analysis computationally, we have to use techniques that will allow us to learn from data that's already been labeled. 
 
 So what's the first step? Splitting labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
 
-#### 6.1.1 Training Data
+#### 5.1.1 Training Data
 
-#### 6.1.2 Test Data
 
-### 6.2 Building a Classifier
+#### 5.1.2 Test Data
 
-#### 6.2.1 Features 
+
+### 5.2 Building a Classifier
+
+#### 5.2.1 Features 
 ```python
 
 def get_words(tweets):
@@ -387,7 +394,7 @@ def get_features(words):
     return features
 ```
 
-#### 6.2.2 Feature Extraction
+#### 5.2.2 Feature Extraction
 
 ``` python
 def extract_features(document):
@@ -402,13 +409,13 @@ def extract_features(document):
 training_set = nltk.classify.apply_features(extract_features, tweets)
 ```
 
-#### 6.2.3 Training the Classifier
+#### 5.2.3 Training the Classifier
 
 ``` python
 classifier = nltk.NaiveBayesClassifier.train(training_set)
 ```
 
-### 6.3 Classification
+### 5.3 Classification
 
 ```python
 
@@ -420,6 +427,4 @@ print classifier.classify(extract_features(example.split()))
 
 
 
-
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0;float:right" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a>
 
