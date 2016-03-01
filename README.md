@@ -98,7 +98,7 @@ A regular expression is a sequence of characters that define a string.
 The simplest form of a regular expression is a sequence of characters contained within <b>two backslashes</b>. For example, <i>python</i> would be  
 
 ``` 
-/python/
+\python
 ```
 
 ### 2.2 Case Sensitivity
@@ -106,29 +106,29 @@ The simplest form of a regular expression is a sequence of characters contained 
 Regular Expressions are <b>case sensitive</b>, which means 
 
 ``` 
-/p/ and /P/
+\p and \P
 ```
 are distinguishable from eachother. This means <i>python</i> and <i>Python</i> would have to be represented differently, as follows: 
 
 ``` 
-/python/ and /Python/
+\python and \Python
 ```
 
 ### 2.3 Disjunctions
 
 If you want a regular expression to represent both <i>python</i> and <i>Python</i>, however, you can use <b>brackets</b> or the <b>pipe</b> symbol as the disjunction of the two forms. For example, 
 ``` 
-/[Pp]ython/ or /Python|python/
+[Pp]ython or \Python|python
 ```
 could represent either <i>python</i> or <i>Python</i>. Likewise, 
 
 ``` 
-/[0123456789]/ 
+[0123456789]
 ```
 would represent a single integer digit. The pipe symbols are typically used for interchangable strings, such as in the following example:
 
 ```
-/dog|cat/
+\dog|cat
 ```
 
 ### 2.4 Ranges
@@ -136,12 +136,12 @@ would represent a single integer digit. The pipe symbols are typically used for 
 If we want a regular expression to express the disjunction of a range of characters, we can use a <b>dash</b>. For example, instead of the previous example, we can write 
 
 ``` 
-/[0-9]/
+[0-9]
 ```
 Similarly, we can represent all characters of the alphabet with 
 
 ``` 
-/[a-z]/
+[a-z]
 ```
 
 ### 2.5 Exclusions
@@ -149,7 +149,7 @@ Similarly, we can represent all characters of the alphabet with
 Brackets can also be used to represent what an expression <b>cannot</b> be if you combine it with the <b>caret</b> sign. For example, the expression 
 
 ``` 
-/[^p]/
+[^p]
 ```
 represents any character, special characters included, but p.
 
@@ -158,17 +158,17 @@ represents any character, special characters included, but p.
 Question marks can be used to represent the expressions containing zero or one instances of the previous character. For example, 
 
 ``` 
-<i>/colou?r/
+<i>\colou?r
 ```
 represents either <i>color</i> or <i>colour</i>. Question marks are often used in cases of plurality. For example, 
 
 ``` 
-<i>/computers?
+<i>\computers?
 ```
 can be either <i>computers</i> or <i>computer</i>. If you want to extend this to more than one character, you can put the simple sequence within parenthesis, like this:
 
 ```
-/Feb(ruary)?/
+\Feb(ruary)?
 ```
 This would evaluate to either <i>February</i> or <i>Feb</i>.
 
@@ -176,7 +176,7 @@ This would evaluate to either <i>February</i> or <i>Feb</i>.
 
 To represent the expressions containing zero or <b>more</b> instances of the previous character, we use an <b>asterisk</b> as the kleene star. To represent the set of strings containing <i>a, ab, abb, abbb, ...</i>, the following regular expression would be used:  
 ```
-/ab*/
+\ab*
 ```
 
 ### 2.8 Wildcards
@@ -184,7 +184,7 @@ To represent the expressions containing zero or <b>more</b> instances of the pre
 Wildcards are used to represent the possibility of any character and symbolized with a <b>period</b>. For example, 
 
 ```
-/beg.n/
+\beg.n
 ```
 From this regular expression, the strings <i>begun, begin, began,</i> etc., can be generated. 
 
@@ -193,7 +193,7 @@ From this regular expression, the strings <i>begun, begin, began,</i> etc., can 
 To represent the expressions containing at <b>least</b> one or more instances of the previous character, we use a <b>plus</b> sign. To represent the set of strings containing <i>ab, abb, abbb, ...</i>, the following regular expression would be used:  
 
 ```
-/ab+
+\ab+
 ```
 
 ## 3.0 Word Tagging & Models
@@ -347,9 +347,6 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 ['woman', 'in', 'technology', 'are', 'amazing', 'at', 'coding']
 ```
 
-## 5.0 
-
-### 5.1
 
 ## 5.0 Sentiment Analysis  
 
@@ -367,27 +364,44 @@ To accomplish sentiment analysis computationally, we have to use techniques that
 
 So what's the first step? Splitting labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
 
+``` python
+return all_tweets
+```
+
 #### 5.1.1 Training Data
 
 
+``` python
+def train_data(all_tweets, parse):
+    train = []
+    for i in range(parse):
+        train.append(all_tweets[i])
+    return train
+```
+
 #### 5.1.2 Test Data
 
+``` python
+def test_data(all_tweets, parse):
+    test = []
+    for i in range(parse, len(all_tweets)):
+        test.append(all_tweets[i])
+    return test
+```
 
 ### 5.2 Building a Classifier
 
-#### 5.2.1 Features 
-```python
+#### 5.2.1 Features
 
+```python
 def get_words(tweets):
     all_words = []
     for (words, sentiment) in tweets:
         all_words.extend(words)
     return all_words
-
 ```
 
 ``` python
-
 def get_features(words):
     words = nltk.FreqDist(words)
     features = words.keys()
