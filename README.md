@@ -13,6 +13,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
     + [1.1 What is NLP?](#11-what-is-nlp)
     + [1.2 Why is NLP Important?](#12-why-is-nlp-importance)
     + [1.3 Why is NLP a "hard" problem?](#13-why-is-nlp-a-hard-problem)
+    + [1.4 Glossary](#14-glossary)
 - [2.0 Sentiment Analysis](#20-sentiment-analysis)
     + [2.1 Preparing the Data](#21-preparing-the-data)
         * [2.1.1 Training Data](#211-training-data)
@@ -57,12 +58,11 @@ We'll be working with the re library for regular expressions and nltk for natura
 
 ``` 
 conda install nltk
-conda install re
 ```
 
 ### 0.3 Other
 
-Since we'll be working on textual analysis, we'll be using datasets that are already well established and widely used. To gain access to these datasets, enter the following command into your command line: 
+Since we'll be working on textual analysis, we'll be using datasets that are already well established and widely used. To gain access to these datasets, enter the following command into your command line: (Note that this might take a few minutes!)
 ```
 sudo python -m nltk.downloader all
 ```
@@ -84,12 +84,20 @@ A specific common application of NLP is each time you use a language conversion 
 
 ### 1.3 Why is NLP a "hard" problem? 
 
-Language is inherently ambiguous. Once person's interpretation of a sentence may very well differ from another person's interpretation. Because of this inability to consistently be clear, there are no perfect NLP techniques. 
+Language is inherently ambiguous. Once person's interpretation of a sentence may very well differ from another person's interpretation. Because of this inability to consistently be clear, it's hard to have an NLP technique that works perfectly. 
 
+### 1.4 Glossary
+
+Here is some common terminology that we'll encounter throughout the workshop:
+
+<b>Corpus: </b> (Plural: Corpora) a collection of written texts that serve as our datasets.
+
+<b>nltk: </b> (Natural Language Toolkit) the python module we'll be using repeatedly; it has a lot of useful built-in NLP techniques.
+
+<b>Token: </b> a string of contiguous characters between two spaces, or between a space and punctuation marks. A token can also be an integer, real, or a number with a colon.
 
 ## 2.0 Sentiment Analysis  
 
-Before now, we've ran a few lines of code to play around with some textual data. But now we'll write some code to perform sentiment analysis on some tweets. 
 
 So you might be asking, what exactly is "sentiment analysis"? 
 
@@ -105,10 +113,18 @@ So what's the first step? Formatting the data so that we can actually apply NLP 
 
 
 ``` python
+import nltk
+
 def format_sentence(sent):
     return {word: True for word in nltk.word_tokenize(sent)}
 ```
+Here, format_sentence changes a piece of text, in this case a tweet, into a dictionary of words mapped to True booleans. Though not obvious from this function alone, this will eventually allow us to train  our prediction model by splitting the text into its tokens, i.e. <i>tokenizing</i> the text.
 
+``` 
+{'!': True, 'animals': True, 'are': True, 'the': True, 'ever': True, 'Dogs': True, 'best': True}
+```
+
+Using the data on the github repo, we'll actually format the positively and negatively labeled data.
 
 ``` python
 pos = []
@@ -121,14 +137,13 @@ with open("./pos_tweets.txt") as f:
 neg = []
 with open("./neg_tweets.txt") as f:
     for i in f: 
-        neg.append([format_sentence(i.decode('utf-8'))), 'neg'])
+        neg.append([format_sentence(i.decode('utf-8')), 'neg'])
 ```
-
-Splitting labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
-
 
 
 #### 2.1.1 Training Data
+
+Next, we'll split the labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
 
 
 ``` python
@@ -145,14 +160,17 @@ test = pos[int((.9)*len(pos)):] + neg[int((.9)*len(neg)):]
 
 
 ``` python
-classifier = nltk.NaiveBayesClassifier.train(training)
+from nltk.classify import NaiveBayesClassifier
+
+classifier = NaiveBayesClassifier.train(training)
 ```
 
 
 ### 2.3 Classification
 
-```python
+Just to see that our model works, let's try the classifier out: 
 
+```python
 example1 = "this workshop is awesome."
 
 print classifier.classify(format_sentence(example1))
@@ -173,6 +191,8 @@ print classifier.classify(format_sentence(example2))
 ```
 ### 2.4 Accuracy
 
+Now, there's no point in building a model if it doesn't work well. Luckily, once again, nltk comes to the rescue with a built in feature that allows us find the accuracy of our model.
+
 ``` python
 from nltk.classify.util import accuracy
 print accuracy(classifier, test)
@@ -181,6 +201,11 @@ print accuracy(classifier, test)
 ``` 
 0.865671641791
 ```
+
+Turns out it works decently well!
+
+But it could be better!
+
 
 ## 3.0 Regular Expressions
 
