@@ -111,7 +111,6 @@ To accomplish sentiment analysis computationally, we have to use techniques that
 
 So what's the first step? Formatting the data so that we can actually apply NLP techniques. 
 
-
 ``` python
 import nltk
 
@@ -123,6 +122,7 @@ Here, format_sentence changes a piece of text, in this case a tweet, into a dict
 ``` 
 {'!': True, 'animals': True, 'are': True, 'the': True, 'ever': True, 'Dogs': True, 'best': True}
 ```
+You'll learn about why this format is important is section 2.2.
 
 Using the data on the github repo, we'll actually format the positively and negatively labeled data.
 
@@ -165,6 +165,27 @@ from nltk.classify import NaiveBayesClassifier
 classifier = NaiveBayesClassifier.train(training)
 ```
 
+All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve use a simple bag of words model where every word is a feature name with a value of True.
+
+To see which features informed our model the most, we can run this line of code:
+
+```python
+classifier.show_most_informative_features()
+```
+
+```
+Most Informative Features
+        no = True                neg : pos    =     20.6 : 1.0
+    awesome = True               pos : neg    =     18.7 : 1.0
+    headache = True              neg : pos    =     18.0 : 1.0
+   beautiful = True              pos : neg    =     14.2 : 1.0
+        love = True              pos : neg    =     14.2 : 1.0
+          Hi = True              pos : neg    =     12.7 : 1.0
+        glad = True              pos : neg    =      9.7 : 1.0
+       Thank = True              pos : neg    =      9.7 : 1.0
+         fan = True              pos : neg    =      9.7 : 1.0
+        lost = True              neg : pos    =      9.3 : 1.0
+```
 
 ### 2.3 Classification
 
@@ -177,7 +198,7 @@ print classifier.classify(format_sentence(example1))
 ```
 
 ```
-'neg'
+'pos'
 ```
 
 ``` python
