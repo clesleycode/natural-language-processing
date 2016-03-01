@@ -42,6 +42,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
     + [5.2 Lemmatization](#52-lemmatization)
         * [5.2.1 What is Lemmatization?](#521-what-is-lemmatization)
         * [5.2.2 WordNetLemmatizer?](#522-wordnetlemmatizer)
+- [6.0 Putting It All Together](#60-putting-it-all-together)
 
 
 ## 0.0 Setup
@@ -143,8 +144,7 @@ with open("./neg_tweets.txt") as f:
 
 #### 2.1.1 Training Data
 
-Next, we'll split the labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
-
+Next, we'll split the labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. The training data will inform our model on which features are most important.
 
 ``` python
 training = pos[:int((.9)*len(pos))] + neg[:int((.9)*len(neg))]
@@ -152,6 +152,7 @@ training = pos[:int((.9)*len(pos))] + neg[:int((.9)*len(neg))]
 
 #### 2.1.2 Test Data
 
+We won't use the test data until the very end of this section, but nevertheless, we save the last 10% of the data to check the accuracy of our model. 
 ``` python
 test = pos[int((.9)*len(pos)):] + neg[int((.9)*len(neg)):]
 ```
@@ -166,7 +167,7 @@ classifier = NaiveBayesClassifier.train(training)
 ```
 
 All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve use a simple bag of words model where every word is a feature name with a value of True.
-
+ 
 To see which features informed our model the most, we can run this line of code:
 
 ```python
@@ -355,7 +356,7 @@ nltk.pos_tag(text)
 [('Python', 'NNP'), ('is', 'VBZ'), ('an', 'DT'), ('awesome', 'JJ'), ('language', 'NN'), ('!', '.')]
 ```
 
-Not sure what DT, JJ, or any other tag is? Just try this in your python terminal: 
+Not sure what DT, JJ, or any other tag is? Just try this in your python shell: 
 
 ```python
 nltk.help.upenn_tagset('JJ')
@@ -375,6 +376,10 @@ But what if a word can be tagged as more than one part of speech? For example, t
 
 ### 4.2 Unigram Models
 
+Remember our bag of words model from earlier? One of its characteristics was that it didn't take the ordering of the words into account - that's why we were able to use dictionarys to map each words to True values. 
+
+    With that said, unigram models are models where the order doesn't make a difference in our model. You might be wondering why we care about unigram models since they seem to be so simple, but don't let their simplicity fool you - they're a foundational block for a lot of more advanced techniques in NLP. 
+
 ```python
 from nltk.corpus import brown
 
@@ -385,12 +390,14 @@ unigram_tagger.tag(brown_sents[2007])
 
 ```
 
+
 ```
 [('Various', 'JJ'), ('of', 'IN'), ('the', 'AT'), ('apartments', 'NNS'), ('are', 'BER'), ('of', 'IN'), ('the', 'AT'), ('terrace', 'NN'), ('type', 'NN'), (',', ','), ('being', 'BEG'), ('on', 'IN'), ('the', 'AT'), ('ground', 'NN'), ('floor', 'NN'), ('so', 'QL'), ('that', 'CS'), ('entrance', 'NN'), ('is', 'BEZ'), ('direct', 'JJ'), ('.', '.')]
 ```
 
 ### 4.3 Bigram Models
 
+Here, ordering does matter. 
 
 ``` python
 bigram_tagger = nltk.BigramTagger(brown_tagged_sents)
@@ -486,6 +493,9 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 ```
 
 
+### 6.0 Putting it All Together
+
+Going back to our original sentiment analysis, we could have improved our model in a lot of ways by applying some of techniques we just went through. The twitter data is seemingly messy and inconsistent, so if we really wanted to get a highly accurate model, we could have done some preprocessing on the tweets to clean it up.
 
 
 
