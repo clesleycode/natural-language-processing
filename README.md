@@ -106,22 +106,22 @@ So what's the first step? Formatting the data so that we can actually apply NLP 
 
 ``` python
 def format_sentence(sent):
-    return {word: True for word in word_tokenize(sent)}
+    return {word: True for word in nltk.word_tokenize(sent)}
 ```
 
 
 ``` python
 pos = []
-with open("./pos_tweets.txt", encoding='latin-1') as f:
+with open("./pos_tweets.txt") as f:
     for i in f: 
-        pos.append([format_sentence(i), 'pos'])
+        pos.append([format_sentence(i.decode('utf-8')), 'pos'])
 ```
 
 ``` python
 neg = []
-with open("./neg_tweets.txt", encoding='latin-1') as f:
+with open("./neg_tweets.txt") as f:
     for i in f: 
-        neg.append([format_sentence(i), 'neg'])
+        neg.append([format_sentence(i.decode('utf-8'))), 'neg'])
 ```
 
 Splitting labeled data we have into two pieces, one that can "train" data and the other to give us insight on how well our model is performing. 
@@ -132,73 +132,55 @@ Splitting labeled data we have into two pieces, one that can "train" data and th
 
 
 ``` python
-def train_data(all_tweets, parse):
-train = []
-for i in range(parse):
-train.append(all_tweets[i])
-return train
+training = pos[:int((.9)*len(pos))] + neg[:int((.9)*len(neg))]
 ```
 
 #### 2.1.2 Test Data
 
 ``` python
-def test_data(all_tweets, parse):
-test = []
-for i in range(parse, len(all_tweets)):
-test.append(all_tweets[i])
-return test
+test = pos[int((.9)*len(pos)):] + neg[int((.9)*len(neg)):]
 ```
 
 ### 2.2 Building a Classifier
 
-#### 2.2.1 Features
-
-```python
-def get_words(tweets):
-all_words = []
-for (words, sentiment) in tweets:
-all_words.extend(words)
-return all_words
-```
 
 ``` python
-def get_features(words):
-words = nltk.FreqDist(words)
-features = words.keys()
-return features
+classifier = nltk.NaiveBayesClassifier.train(training)
 ```
 
-#### 2.2.2 Feature Extraction
-
-``` python
-def extract_features(document):
-document_words = set(document)
-features = {}
-for word in word_features:
-features['contains(%s)' % word] = (word in document_words)
-return features
-```
-
-``` python
-training_set = nltk.classify.apply_features(extract_features, tweets)
-```
-
-#### 5.2.3 Training the Classifier
-
-``` python
-classifier = nltk.NaiveBayesClassifier.train(training_set)
-```
 
 ### 2.3 Classification
 
 ```python
 
-example = "this workshop is awesome."
+example1 = "this workshop is awesome."
 
-print classifier.classify(extract_features(example.split()))
-
+print classifier.classify(format_sentence(example1))
 ```
 
+```
+'neg'
+```
+
+``` python
+example2 = "this workshop is awful."
+
+print classifier.classify(format_sentence(example2))
+```
+
+```
+'neg'
+```
+### 2.4 Accuracy
+
+``` python
+from nltk.classify.util import accuracy
+print accuracy(classifier, test)
+```
+
+``` 
+0.865671641791
+```
 
 ## 3.0 Regular Expressions
 
