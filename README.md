@@ -495,10 +495,3 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 ```
 
 
-### 6.0 Putting it All Together
-
-Going back to our original sentiment analysis, we could have improved our model in a lot of ways by applying some of techniques we just went through. The twitter data is seemingly messy and inconsistent, so if we really wanted to get a highly accurate model, we could have done some preprocessing on the tweets to clean it up.
-
-
-
-
