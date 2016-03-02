@@ -42,7 +42,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
     + [5.2 Lemmatization](#52-lemmatization)
         * [5.2.1 What is Lemmatization?](#521-what-is-lemmatization)
         * [5.2.2 WordNetLemmatizer?](#522-wordnetlemmatizer)
-- [6.0 Final Words](#60-final Words)
+- [6.0 Final Words](#60-final-words)
     + [6.1 Resources](#61-resources)
 
 
@@ -52,7 +52,9 @@ This guide was written in Python 2.7.
 
 ### 0.1 Python & Anaconda
 
-Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.continuum.io/anaconda/install). 
+Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.continuum.io/anaconda/install).
+
+*Note: Pip can be used in place of Anaconda. 
 
 ### 0.2 Libraries
 
@@ -381,7 +383,7 @@ But what if a word can be tagged as more than one part of speech? For example, t
 
 Remember our bag of words model from earlier? One of its characteristics was that it didn't take the ordering of the words into account - that's why we were able to use dictionarys to map each words to True values. 
 
-    With that said, unigram models are models where the order doesn't make a difference in our model. You might be wondering why we care about unigram models since they seem to be so simple, but don't let their simplicity fool you - they're a foundational block for a lot of more advanced techniques in NLP. 
+With that said, unigram models are models where the order doesn't make a difference in our model. You might be wondering why we care about unigram models since they seem to be so simple, but don't let their simplicity fool you - they're a foundational block for a lot of more advanced techniques in NLP. 
 
 ```python
 from nltk.corpus import brown
@@ -495,6 +497,8 @@ lemmas = [lemma.lemmatize(i) for i in ex]
 ['woman', 'in', 'technology', 'are', 'amazing', 'at', 'coding']
 ```
 
+
+
 Notice that women is changed to "woman"! 
 
 ## 6.0 Final Words 
@@ -505,8 +509,10 @@ Secondly, the way in which we built our classifier could have been improved. Our
 
 ### 6.1 Resources
 
-[Natural Language Processing With Python](http://bit.ly/nlp-w-python)
+[Natural Language Processing With Python](http://bit.ly/nlp-w-python) <br>
 [Regular Expressions Cookbook](http://bit.ly/regular-expressions-cb)
+
+
 
 
 
