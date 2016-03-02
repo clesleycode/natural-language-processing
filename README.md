@@ -190,7 +190,7 @@ Most Informative Features
 
 ### 2.3 Classification
 
-Just to see that our model works, let's try the classifier out: 
+Just to see that our model works, let's try the classifier out with a positive example: 
 
 ```python
 example1 = "this workshop is awesome."
@@ -201,6 +201,8 @@ print classifier.classify(format_sentence(example1))
 ```
 'pos'
 ```
+
+Now for a negative example:
 
 ``` python
 example2 = "this workshop is awful."
@@ -226,7 +228,7 @@ print accuracy(classifier, test)
 
 Turns out it works decently well!
 
-But it could be better!
+But it could be better! I think we can agree that the data is kind of messy - there are typos, abbreviations, grammatical errors of all sorts... So how do we handle that? Can we handle that? 
 
 
 ## 3.0 Regular Expressions
