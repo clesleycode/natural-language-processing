@@ -71,6 +71,11 @@ Since we'll be working on textual analysis, we'll be using datasets that are alr
 sudo python -m nltk.downloader all
 ```
 
+Lastly, download the data we'll be working with in this example! 
+
+[Positive Tweets]() <br>
+[Negative Tweets]()
+
 Now you're all set to begin!
 
 ## 1.0 Background
