@@ -44,11 +44,12 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
         * [5.2.2 WordNetLemmatizer?](#522-wordnetlemmatizer)
 - [6.0 Final Words](#60-final-words)
     + [6.1 Resources](#61-resources)
+    + [6.2 More!](#62-more)
 
 
 ## 0.0 Setup
 
-This guide was written in Python 2.7.
+This guide was written in Python 3.5.
 
 ### 0.1 Python & Anaconda
 
@@ -68,13 +69,13 @@ conda install nltk
 
 Since we'll be working on textual analysis, we'll be using datasets that are already well established and widely used. To gain access to these datasets, enter the following command into your command line: (Note that this might take a few minutes!)
 ```
-sudo python -m nltk.downloader all
+sudo python3 -m nltk.downloader all
 ```
 
 Lastly, download the data we'll be working with in this example! 
 
-[Positive Tweets]() <br>
-[Negative Tweets]()
+[Positive Tweets](https://github.com/lesley2958/natural-language-processing/blob/master/pos_tweets.txt) <br>
+[Negative Tweets](https://github.com/lesley2958/natural-language-processing/blob/master/neg_tweets.txt)
 
 Now you're all set to begin!
 
@@ -124,7 +125,7 @@ So what's the first step? Formatting the data so that we can actually apply NLP 
 import nltk
 
 def format_sentence(sent):
-    return {word: True for word in nltk.word_tokenize(sent)}
+    return({word: True for word in nltk.word_tokenize(sent)})
 ```
 Here, format_sentence changes a piece of text, in this case a tweet, into a dictionary of words mapped to True booleans. Though not obvious from this function alone, this will eventually allow us to train  our prediction model by splitting the text into its tokens, i.e. <i>tokenizing</i> the text.
 
@@ -139,14 +140,14 @@ Using the data on the github repo, we'll actually format the positively and nega
 pos = []
 with open("./pos_tweets.txt") as f:
     for i in f: 
-        pos.append([format_sentence(i.decode('utf-8')), 'pos'])
+        pos.append([format_sentence(i), 'pos'])
 ```
 
 ``` python
 neg = []
 with open("./neg_tweets.txt") as f:
     for i in f: 
-        neg.append([format_sentence(i.decode('utf-8')), 'neg'])
+        neg.append([format_sentence(i), 'neg'])
 ```
 
 
@@ -162,7 +163,7 @@ training = pos[:int((.9)*len(pos))] + neg[:int((.9)*len(neg))]
 
 We won't use the test data until the very end of this section, but nevertheless, we save the last 10% of the data to check the accuracy of our model. 
 ``` python
-test = pos[int((.9)*len(pos)):] + neg[int((.9)*len(neg)):]
+test = pos[int((.1)*len(pos)):] + neg[int((.1)*len(neg)):]
 ```
 
 ### 2.2 Building a Classifier
@@ -203,7 +204,7 @@ Just to see that our model works, let's try the classifier out with a positive e
 ```python
 example1 = "this workshop is awesome."
 
-print classifier.classify(format_sentence(example1))
+print(classifier.classify(format_sentence(example1)))
 ```
 
 ```
@@ -215,7 +216,7 @@ Now for a negative example:
 ``` python
 example2 = "this workshop is awful."
 
-print classifier.classify(format_sentence(example2))
+print(classifier.classify(format_sentence(example2)))
 ```
 
 ```
@@ -227,11 +228,11 @@ Now, there's no point in building a model if it doesn't work well. Luckily, once
 
 ``` python
 from nltk.classify.util import accuracy
-print accuracy(classifier, test)
+print(accuracy(classifier, test))
 ```
 
 ``` 
-0.865671641791
+0.9562326869806094
 ```
 
 Turns out it works decently well!
@@ -262,6 +263,13 @@ are distinguishable from eachother. This means <i>python</i> and <i>Python</i> w
 
 ``` 
 \python and \Python
+```
+
+We can check these are different by running:
+
+``` python
+re1 = re.compile('python')
+print(bool(re1.match('Python')))
 ```
 
 ### 3.3 Disjunctions
@@ -382,6 +390,8 @@ multilingual multi-disciplinary ...
 #### 4.1.1 Ambiguity
 
 But what if a word can be tagged as more than one part of speech? For example, the word "sink." Depending on the content of the sentence, it could either be a noun or a verb.
+
+Furthermore, what if a piece of text demonstrates a rhetorical device like sarcasm or irony? Clearly this can mislead the sentiment analyzer to misclassify a regular expression. 
 
 
 ### 4.2 Unigram Models
@@ -516,6 +526,17 @@ Secondly, the way in which we built our classifier could have been improved. Our
 
 [Natural Language Processing With Python](http://bit.ly/nlp-w-python) <br>
 [Regular Expressions Cookbook](http://bit.ly/regular-expressions-cb)
+
+### 6.2 More!
+
+Join us for more workshops! 
+
+[Saturday, December 17th, 1:00pm: Intermediate Natural Language Processing](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236197565/) <br>
+[Sunday, December 18th, 1:00pm: Data Science-Deep Learning with Python ](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236196996/) <br>
+[Monday, December 19th, 6:00pm: Deep Learning Meets NLP: Intro to word2vec](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199267/) <br>
+[Wednesday, December 21st, 6:00pm: Intro to Data Science](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199419/) <br>
+[Thursday, December 22nd, 6:00pm: Intro to Data Science with R](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199452/) <br>
+[Tuesday, December 27th, 6:00pm: Python vs R for Data Science](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236203310/)
 
 
 
