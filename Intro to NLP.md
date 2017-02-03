@@ -20,6 +20,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
         * [2.1.2 Test Data](#212-test-data)
     + [2.2 Building a Classifier](#22-building-a-classifier)
     + [2.3 Classification](#53-classification)
+    + [2.4 Accuracy](#24-accuracy)
 - [3.0 Regular Expressions](#30-regular-expressions)
     + [3.1 Simplest Form](#31-simplest-form)
     + [3.2 Case Sensitivity](#32-case-sensitivity)
@@ -44,7 +45,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
         * [5.2.2 WordNetLemmatizer?](#522-wordnetlemmatizer)
 - [6.0 Final Words](#60-final-words)
     + [6.1 Resources](#61-resources)
-    + [6.2 More!](#62-more)
+    + [6.2 Mini Courses](#62-mini-courses)
 
 
 ## 0.0 Setup
@@ -113,7 +114,7 @@ So you might be asking, what exactly is "sentiment analysis"?
 
 Well, sentiment analysis involves building a system to collect and determine the emotional tone behind words. This is important because it allows you to gain an understanding of the attitudes, opinions and emotions of the people in your data. 
 
-At a high level, sentiment analysis involves Natural language processing and artificial intelligence by taking the actual text element, transforming it into a format that machine can read, and using statistics to determine the actual sentiment.
+At a high level, sentiment analysis involves Natural language processing and artificial intelligence by taking the actual text element, transforming it into a format that a machine can read, and using statistics to determine the actual sentiment.
 
 ### 2.1 Preparing the Data 
 
@@ -175,7 +176,7 @@ from nltk.classify import NaiveBayesClassifier
 classifier = NaiveBayesClassifier.train(training)
 ```
 
-All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve use a simple bag of words model where every word is a feature name with a value of True.
+All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve used a simple bag of words model where every word is a feature name with a value of True.
  
 To see which features informed our model the most, we can run this line of code:
 
@@ -268,6 +269,7 @@ are distinguishable from eachother. This means <i>python</i> and <i>Python</i> w
 We can check these are different by running:
 
 ``` python
+import re
 re1 = re.compile('python')
 print(bool(re1.match('Python')))
 ```
@@ -396,7 +398,7 @@ Furthermore, what if a piece of text demonstrates a rhetorical device like sarca
 
 ### 4.2 Unigram Models
 
-Remember our bag of words model from earlier? One of its characteristics was that it didn't take the ordering of the words into account - that's why we were able to use dictionarys to map each words to True values. 
+Remember our bag of words model from earlier? One of its characteristics was that it didn't take the ordering of the words into account - that's why we were able to use dictionaries to map each words to True values. 
 
 With that said, unigram models are models where the order doesn't make a difference in our model. You might be wondering why we care about unigram models since they seem to be so simple, but don't let their simplicity fool you - they're a foundational block for a lot of more advanced techniques in NLP. 
 
@@ -527,18 +529,18 @@ Secondly, the way in which we built our classifier could have been improved. Our
 [Natural Language Processing With Python](http://bit.ly/nlp-w-python) <br>
 [Regular Expressions Cookbook](http://bit.ly/regular-expressions-cb)
 
-### 6.2 More!
 
-Join us for more workshops! 
+### 6.2 Mini Courses
 
-[Saturday, December 17th, 1:00pm: Intermediate Natural Language Processing](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236197565/) <br>
-[Sunday, December 18th, 1:00pm: Data Science-Deep Learning with Python ](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236196996/) <br>
-[Monday, December 19th, 6:00pm: Deep Learning Meets NLP: Intro to word2vec](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199267/) <br>
-[Wednesday, December 21st, 6:00pm: Intro to Data Science](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199419/) <br>
-[Thursday, December 22nd, 6:00pm: Intro to Data Science with R](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236199452/) <br>
-[Tuesday, December 27th, 6:00pm: Python vs R for Data Science](https://www.meetup.com/Byte-Academy-Finance-and-Technology-community/events/236203310/)
+Learn about courses [here](www.byteacademy.co/all-courses/data-science-mini-courses/).
 
-
-
-
-
+[Python 101: Data Science Prep](https://www.eventbrite.com/e/python-101-data-science-prep-tickets-30980459388) <br>
+[Intro to Data Science & Stats with R](https://www.eventbrite.com/e/data-sci-109-intro-to-data-science-statistics-using-r-tickets-30908877284) <br>
+[Data Acquisition Using Python & R](https://www.eventbrite.com/e/data-sci-203-data-acquisition-using-python-r-tickets-30980705123) <br>
+[Data Visualization with Python](https://www.eventbrite.com/e/data-sci-201-data-visualization-with-python-tickets-30980827489) <br>
+[Fundamentals of Machine Learning and Regression Analysis](https://www.eventbrite.com/e/data-sci-209-fundamentals-of-machine-learning-and-regression-analysis-tickets-30980917759) <br>
+[Natural Language Processing with Data Science](https://www.eventbrite.com/e/data-sci-210-natural-language-processing-with-data-science-tickets-30981006023) <br>
+[Machine Learning with Data Science](https://www.eventbrite.com/e/data-sci-309-machine-learning-with-data-science-tickets-30981154467) <br>
+[Databases & Big Data](https://www.eventbrite.com/e/data-sci-303-databases-big-data-tickets-30981182551) <br>
+[Deep Learning with Data Science](https://www.eventbrite.com/e/data-sci-403-deep-learning-with-data-science-tickets-30981221668) <br>
+[Data Sci 500: Projects](https://www.eventbrite.com/e/data-sci-500-projects-tickets-30981330995)
