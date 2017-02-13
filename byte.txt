@@ -1,0 +1,9 @@
+Natural Language Processing:
+
+Day 1 of 6, 6:00pm-9:00pm:
+	Sections 1.0 - 5.0:
+		- Intro to Topic
+		- Regular Expressions
+		- Word Tagging
+		- Normalizing Text 
+

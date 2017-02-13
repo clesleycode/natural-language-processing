@@ -1,12 +1,14 @@
 Intro to Natural Language Processing
 ==================
 
-Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com)
+Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com). 
+
+You can also find this curriculum on [Medium](https://medium.com/byteacademyco/intro-to-natural-language-processing-f6c92d1fce33#.evs7rnkms).
 
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
-    + [0.1 Python and Anaconda](#01-python--anaconda)
+    + [0.1 Python & Anaconda](#01-python--anaconda)
     + [0.2 Libraries](#02-libraries)
     + [0.3 Other](#03-other)
 - [1.0 Background](#10-background)
@@ -60,9 +62,10 @@ Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.
 
 ### 0.2 Libraries
 
-We'll be working with the re library for regular expressions and nltk for natural language processing techniques, so make sure to install them! To install these libraries, enter the following commands into your terminal: 
+We'll be working with the `re` library for regular expressions and nltk for natural language processing techniques, so make sure to install them! To install these libraries, enter the following commands into your terminal: 
 
 ``` 
+conda install re
 conda install nltk
 ```
 
