@@ -33,13 +33,13 @@ You can also find this curriculum on [Medium](https://medium.com/byteacademyco/i
     + [3.7 Kleene Star](#37-kleene-star) 
     + [3.8 Wildcards](#38-wildcards) 
     + [3.9 Kleene+](#39-kleene) 
-- [4.0 Word Tagging and Models](#40-word-tagging--models)
+- [4.0 Word Tagging and Models](#40-word-tagging-and-models)
     + [4.1 NLTK Parts of Speech Tagger](#41-nltk-parts-of-speech-tagger)
         * [4.1.1 Ambiguity](#411-ambiguity)
     + [4.2 Unigram Models](#42-unigram-models)
     + [4.3 Bigram Models](#43-bigram-models)
 - [5.0 Normalizing Text](#40-normalizing-text)
-    + [5.1 Stemming](#41-stemming)
+    + [5.1 Stemming](#51-stemming)
         * [5.1.1 What is Stemming?](#511-what-is-stemming)
         * [5.1.2 Types of Stemmers](#512-types-of-stemmers)
     + [5.2 Lemmatization](#52-lemmatization)
@@ -359,7 +359,7 @@ To represent the expressions containing at <b>least</b> one or more instances of
 \ab+
 ```
 
-## 4.0 Word Tagging & Models
+## 4.0 Word Tagging and Models
 
 Given any sentence, you can classify each word as a noun, verb, conjunction, or any other class of words. When there are hundreds of thousands of sentences, even millions, this is obviously a large and tedious task. But it's not one that can't be solved computationally. 
 
