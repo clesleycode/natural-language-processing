@@ -47,7 +47,7 @@ You can also find this curriculum on [Medium](https://medium.com/byteacademyco/i
         * [5.2.2 WordNetLemmatizer?](#522-wordnetlemmatizer)
 - [6.0 Final Words](#60-final-words)
     + [6.1 Resources](#61-resources)
-    + [6.2 Mini Courses](#62-mini-courses)
+    + [6.2 More Stuff](#62-mini-courses)
 
 
 ## 0.0 Setup
@@ -533,8 +533,19 @@ Secondly, the way in which we built our classifier could have been improved. Our
 [Regular Expressions Cookbook](http://bit.ly/regular-expressions-cb)
 
 
-### 6.2 Mini Courses
+### 6.2 More Stuff
 
+Liked my talk? Leave me a review [here](https://coursehorse.com/nyc/schools/tech/byte-academy/review)! :) (select "Data Sci 210" & enter today's date!)
+
+[Byte Academy](http://byteacademy.co/) is a small start-up in Midtown Manhattan that focuses on computer science education. More specifically, Byte frequently hosts bootcamps and workshops for students and engineers and provided learning resources like [ByteDev](http://bytedev.co/) and Byte App. 
+
+[My Website](http://www.columbia.edu/~lc2958/) <br>
+[My Data Blog](http://lesley2958.github.io/) <br>
+[Linkedin](https://www.linkedin.com/in/lesleycordero/) <br>
+[Github](https://github.com/lesley2958) <br>
+[Medium](https://medium.com/@lesleycordero)<br>
+[Twitter](https://twitter.com/lesleyclovesyou) <br>
+[Quora](https://www.quora.com/profile/Lesley-Cordero)
 Learn about courses [here](www.byteacademy.co/all-courses/data-science-mini-courses/).
 
 [Python 101: Data Science Prep](https://www.eventbrite.com/e/python-101-data-science-prep-tickets-30980459388) <br>
