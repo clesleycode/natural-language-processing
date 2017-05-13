@@ -56,22 +56,22 @@ This guide was written in Python 3.5.
 
 ### 0.1 Python & Anaconda
 
-Download [Python](https://www.python.org/downloads/) and [Anaconda](http://docs.continuum.io/anaconda/install).
+Download [Python](https://www.python.org/downloads/) and [Pip](http://docs.continuum.io/anaconda/install).
 
-*Note: Pip can be used in place of Anaconda. 
 
 ### 0.2 Libraries
 
 We'll be working with the `re` library for regular expressions and nltk for natural language processing techniques, so make sure to install them! To install these libraries, enter the following commands into your terminal: 
 
 ``` 
-conda install re
-conda install nltk
+pip3 install re
+pip3 install nltk
 ```
 
 ### 0.3 Other
 
 Since we'll be working on textual analysis, we'll be using datasets that are already well established and widely used. To gain access to these datasets, enter the following command into your command line: (Note that this might take a few minutes!)
+
 ```
 sudo python3 -m nltk.downloader all
 ```
@@ -110,8 +110,8 @@ Here is some common terminology that we'll encounter throughout the workshop:
 
 <b>Token: </b> a string of contiguous characters between two spaces, or between a space and punctuation marks. A token can also be an integer, real, or a number with a colon.
 
-## 2.0 Sentiment Analysis  
 
+## 2.0 Sentiment Analysis  
 
 So you might be asking, what exactly is "sentiment analysis"? 
 
