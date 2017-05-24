@@ -131,11 +131,13 @@ import nltk
 def format_sentence(sent):
     return({word: True for word in nltk.word_tokenize(sent)})
 ```
-Here, format_sentence changes a piece of text, in this case a tweet, into a dictionary of words mapped to True booleans. Though not obvious from this function alone, this will eventually allow us to train  our prediction model by splitting the text into its tokens, i.e. <i>tokenizing</i> the text.
+
+Here, `format_sentence` changes a piece of text, in this case a tweet, into a dictionary of words mapped to True booleans. Though not obvious from this function alone, this will eventually allow us to train  our prediction model by splitting the text into its tokens, i.e. <i>tokenizing</i> the text.
 
 ``` 
 {'!': True, 'animals': True, 'are': True, 'the': True, 'ever': True, 'Dogs': True, 'best': True}
 ```
+
 You'll learn about why this format is important is section 2.2.
 
 Using the data on the github repo, we'll actually format the positively and negatively labeled data.
@@ -166,20 +168,20 @@ training = pos[:int((.9)*len(pos))] + neg[:int((.9)*len(neg))]
 #### 2.1.2 Test Data
 
 We won't use the test data until the very end of this section, but nevertheless, we save the last 10% of the data to check the accuracy of our model. 
+
 ``` python
 test = pos[int((.1)*len(pos)):] + neg[int((.1)*len(neg)):]
 ```
 
 ### 2.2 Building a Classifier
 
+All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve used a simple bag of words model where every word is a feature name with a value of True.
 
 ``` python
 from nltk.classify import NaiveBayesClassifier
 
 classifier = NaiveBayesClassifier.train(training)
 ```
-
-All NLTK classifiers work with feature structures, which can be simple dictionaries mapping a feature name to a feature value. In this example, we’ve used a simple bag of words model where every word is a feature name with a value of True.
  
 To see which features informed our model the most, we can run this line of code:
 
@@ -226,6 +228,7 @@ print(classifier.classify(format_sentence(example2)))
 ```
 'neg'
 ```
+
 ### 2.4 Accuracy
 
 Now, there's no point in building a model if it doesn't work well. Luckily, once again, nltk comes to the rescue with a built in feature that allows us find the accuracy of our model.
@@ -280,14 +283,17 @@ print(bool(re1.match('Python')))
 ### 3.3 Disjunctions
 
 If you want a regular expression to represent both <i>python</i> and <i>Python</i>, however, you can use <b>brackets</b> or the <b>pipe</b> symbol as the disjunction of the two forms. For example, 
+
 ``` 
 [Pp]ython or \Python|python
 ```
+
 could represent either <i>python</i> or <i>Python</i>. Likewise, 
 
 ``` 
 [0123456789]
 ```
+
 would represent a single integer digit. The pipe symbols are typically used for interchangable strings, such as in the following example:
 
 ```
