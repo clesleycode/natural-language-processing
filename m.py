@@ -1,4 +1,3 @@
-
 import matplotlib.pyplot as plt
 import numpy as np
 import sklearn
@@ -12,12 +11,12 @@ matplotlib.rcParams['figure.figsize'] = (10.0, 8.0)
 np.random.seed(0)
 X, y = sklearn.datasets.make_moons(200, noise=0.20)
 
-num_examples = len(X) # training set size
-nn_input_dim = 2 # input layer dimensionality
-nn_output_dim = 2 # o
+num_examples = len(X)  # training set size
+nn_input_dim = 2  # input layer dimensionality
+nn_output_dim = 2  # o
 
-epsilon = 0.01 # learning rate for gradient descent
-reg_lambda = 0.01 # regularization strength
+epsilon = 0.01  # learning rate for gradient descent
+reg_lambda = 0.01  # regularization strength
 
 
 def calculate_loss(model):
@@ -31,10 +30,10 @@ def calculate_loss(model):
     # Calculating the loss
     corect_logprobs = -np.log(probs[range(num_examples), y])
     data_loss = np.sum(corect_logprobs)
-    # Add regulatization term to loss 
-    data_loss += reg_lambda/2 * (np.sum(np.square(W1)) + np.sum(np.square(W2)))
-    return (1./num_examples * data_loss)
-
+    # Add regulatization term to loss
+    data_loss += reg_lambda / 2 * \
+        (np.sum(np.square(W1)) + np.sum(np.square(W2)))
+    return (1. / num_examples * data_loss)
 
 
 def predict(model, x):
@@ -46,7 +45,6 @@ def predict(model, x):
     exp_scores = np.exp(z2)
     probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
     return (np.argmax(probs, axis=1))
-
 
 
 def build_model(nn_hdim, num_passes=20000, print_loss=False):
@@ -80,7 +78,7 @@ def build_model(nn_hdim, num_passes=20000, print_loss=False):
         dW1 = np.dot(X.T, delta2)
         db1 = np.sum(delta2, axis=0)
 
-        # Add regularization terms 
+        # Add regularization terms
         dW2 += reg_lambda * W2
         dW1 += reg_lambda * W1
 
@@ -91,12 +89,13 @@ def build_model(nn_hdim, num_passes=20000, print_loss=False):
         b2 += -epsilon * db2
 
         # Assign new parameters to the model
-        model = { 'W1': W1, 'b1': b1, 'W2': W2, 'b2': b2}
+        model = {'W1': W1, 'b1': b1, 'W2': W2, 'b2': b2}
 
         if print_loss and i % 1000 == 0:
-          print "Loss after iteration %i: %f" %(i, calculate_loss(model))
+            print("Loss after iteration %i: %f" % (i, calculate_loss(model)))
 
     return (model)
+
 
 model = build_model(3, print_loss=True)
 
