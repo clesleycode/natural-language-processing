@@ -539,21 +539,6 @@ Secondly, the way in which we built our classifier could have been improved. Our
 [Regular Expressions Cookbook](http://bit.ly/regular-expressions-cb)
 
 
-### 6.2 More Stuff
-
-Liked my talk? Leave me a review [here](https://coursehorse.com/nyc/schools/tech/byte-academy/review)! :) (select "Data Sci 210" & enter today's date!)
-
-[Byte Academy](http://byteacademy.co/) is a small start-up in Midtown Manhattan that focuses on computer science education. More specifically, Byte frequently hosts bootcamps and workshops for students and engineers and provided learning resources like [ByteDev](http://bytedev.co/) and Byte App. 
-
-[My Website](http://www.columbia.edu/~lc2958/) <br>
-[My Data Blog](http://lesley2958.github.io/) <br>
-[Linkedin](https://www.linkedin.com/in/lesleycordero/) <br>
-[Github](https://github.com/lesley2958) <br>
-[Medium](https://medium.com/@lesleycordero)<br>
-[Twitter](https://twitter.com/lesleyclovesyou) <br>
-[Quora](https://www.quora.com/profile/Lesley-Cordero)
-Learn about courses [here](www.byteacademy.co/all-courses/data-science-mini-courses/).
-
 Intermediate Natural Language Processing
 ==================
 
