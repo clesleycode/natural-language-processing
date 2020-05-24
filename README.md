@@ -3,8 +3,6 @@ Intro to Natural Language Processing
 
 Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com). 
 
-You can also find this curriculum on [Medium](https://medium.com/byteacademyco/intro-to-natural-language-processing-f6c92d1fce33#.evs7rnkms).
-
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
