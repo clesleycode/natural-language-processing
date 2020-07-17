@@ -1,7 +1,7 @@
 Intro to Natural Language Processing
 ==================
 
-Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com). 
+Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](https://adicu.com). Last major update was in 2017 and isn't being actively maintained. 
 
 ## Table of Contents
 
@@ -547,40 +547,40 @@ This guide assumes some basic knowledge of Natural Language Processing; more spe
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
-+ [0.1 Python and Pip](#01-python--pip)
-+ [0.2 Libraries](#02-libraries)
-+ [0.3 Other](#03-other)
+    + [0.1 Python and Pip](#01-python--pip)
+    + [0.2 Libraries](#02-libraries)
+    + [0.3 Other](#03-other)
 - [1.0 Background](#10-background)
-+ [1.1 Polarity Flippers](#11-polarity-flippers)
-* [1.1.1 Negation](#111-negation)
-+ [1.2 Multiword Expressions](#12-multiword-expressions)
-+ [1.3 WordNet](#13-wordnet)
-* [1.3.1 Synsets](#131-synsets)
-* [1.3.2 Negation](#132-negations)
-+ [1.4 SentiWordNet](#14-sentiwordnet)
-+ [1.5 Stop Words](#15-stop-words)
-+ [1.6 Testing](#16-testing)
-* [1.6.1 Cross Validation](#161-cross-validation)
-* [1.6.2 Precision](#162-precision)
-+ [1.7 Logistic Regression](#17-logistic-regression)
+    + [1.1 Polarity Flippers](#11-polarity-flippers)
+    * [1.1.1 Negation](#111-negation)
+    + [1.2 Multiword Expressions](#12-multiword-expressions)
+    + [1.3 WordNet](#13-wordnet)
+    * [1.3.1 Synsets](#131-synsets)
+    * [1.3.2 Negation](#132-negations)
+    + [1.4 SentiWordNet](#14-sentiwordnet)
+    + [1.5 Stop Words](#15-stop-words)
+    + [1.6 Testing](#16-testing)
+    * [1.6.1 Cross Validation](#161-cross-validation)
+    * [1.6.2 Precision](#162-precision)
+    + [1.7 Logistic Regression](#17-logistic-regression)
 - [2.0 Information Extraction](#20-information-extraction)
-+ [2.1 Data Forms](#21-data-forms)
-+ [2.2 What is Information Extraction?](#22-what-is-information-extraction)
+    + [2.1 Data Forms](#21-data-forms)
+    + [2.2 What is Information Extraction?](#22-what-is-information-extraction)
 - [3.0 Chunking](#30-chunking)
-+ [3.1 Noun Phrase Chunking](#31-noun-phrase-chunking)
+    + [3.1 Noun Phrase Chunking](#31-noun-phrase-chunking)
 - [4.0 Named Entity Extraction](#40-named-entity-extraction)
-+ [4.1 spaCy](#41-spacy)
-+ [4.2 nltk](#42-nltk)
+    + [4.1 spaCy](#41-spacy)
+    + [4.2 nltk](#42-nltk)
 - [5.0 Relation Extraction](#50-relation-extraction)
-+ [5.1 Rule-Based Systems](#51-rule--based-systems)
-+ [5.2 Machine Learning](#52-machine-learning)
+    + [5.1 Rule-Based Systems](#51-rule--based-systems)
+    + [5.2 Machine Learning](#52-machine-learning)
 - [6.0 Sentiment Analysis](#60-sentiment-analysis)
-+ [6.1 Loading the Data](#61-loading-the-data)
-+ [6.2 Preparing the Data](#62-preparing-the-data)
-+ [6.3 Linear Classifier](#63-linear-classifier)
+    + [6.1 Loading the Data](#61-loading-the-data)
+    + [6.2 Preparing the Data](#62-preparing-the-data)
+    + [6.3 Linear Classifier](#63-linear-classifier)
 - [7.0 Final Words](#70-final-words)
-+ [7.1 Resources](#71-resources)
-+ [7.2 Mini Courses](#72-mini-courses)
+    + [7.1 Resources](#71-resources)
+    + [7.2 Mini Courses](#72-mini-courses)
 
 ## 0.0 Setup
 
