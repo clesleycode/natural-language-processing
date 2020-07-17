@@ -6,7 +6,7 @@ Brought to you by [Lesley Cordero](http://www.columbia.edu/~lc2958) and [ADI](ht
 ## Table of Contents
 
 - [0.0 Setup](#00-setup)
-    + [0.1 Python & Anaconda](#01-python--anaconda)
+    + [0.1 Python & Pip](#01-python--pip)
     + [0.2 Libraries](#02-libraries)
     + [0.3 Other](#03-other)
 - [1.0 Background](#10-background)
