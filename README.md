@@ -966,8 +966,8 @@ In the following code, we search for strings that contain the word "in". The spe
 ``` python
 IN = re.compile(r'.*\bin\b(?!\b.+ing)')
 for doc in nltk.corpus.ieer.parsed_docs('NYT_19980315'):
-for rel in nltk.sem.relextract.extract_rels('ORG', 'LOC', doc,corpus='ieer', pattern = IN):
-print (nltk.sem.relextract.rtuple(rel))
+    for rel in nltk.sem.relextract.extract_rels('ORG', 'LOC', doc,corpus='ieer', pattern = IN):
+        print (nltk.sem.relextract.rtuple(rel))
 ```
 
 And so we get: 
@@ -1005,13 +1005,13 @@ As we saw in the previous tutorial, sentiment analysis refers to the use of text
 
 ### 6.1 Loading the Data
 
-First, we begin by loading the data. Since we'll be using data available online, we'll use the urllib module to avoid having to manually download any data.
+First, we begin by loading the data. Since we'll be using data available online, we'll use the `urllib` module to avoid having to manually download any data.
 
 ``` python
 import urllib.request
 ```
 
-So then we'll define the test and training data URLs to variables, as well as filenames for each of those datasets.
+Once imported, we'll then define the test and training data URLs as variables, as well as filenames for each of those datasets. This is so that we can easily download these to our local computer. 
 
 ``` python
 test_url = "https://dl.dropboxusercontent.com/u/8082731/datasets/UMICH-SI650/testdata.txt"
@@ -1028,7 +1028,7 @@ test_data_f = urllib.request.urlretrieve(test_url, test_file)
 train_data_f = urllib.request.urlretrieve(train_url, train_file)
 ```
 
-Now that we've downloaded our datasets, we can load them into pandas dataframes. First for the test data:
+Now that we've downloaded our datasets, we can load them into pandas dataframes with the `read_csv` function. We'll start off with our test data and then repeat the same code for our training data. 
 
 ``` python
 import pandas as pd
@@ -1037,14 +1037,14 @@ test_data_df = pd.read_csv(test_file, header=None, delimiter="\t", quoting=3)
 test_data_df.columns = ["Text"]
 ```
 
-Next for training data: 
+The key difference here is that we set `.columns` to a list of two elements instead of one. This is because we need a column to indicate the label, otherwise the model won't be able to train. For our text data before, however, we explicitly don't want the training label since our model will be predicting those labels. 
 
 ``` python
 train_data_df = pd.read_csv(train_file, header=None, delimiter="\t", quoting=3)
 train_data_df.columns = ["Sentiment","Text"]
 ```
 
-Just to see how the dataframe looks, let's call the .head() method on both dataframes. 
+Just to see how the dataframe looks, let's call the `.head()` method on both dataframes. 
 
 ``` python
 test_data_df.head()
@@ -1113,11 +1113,11 @@ Here we init the vectoriser with the CountVectorizer class, making sure to pass 
 
 ``` python
 vectorizer = CountVectorizer(
-analyzer = 'word',
-tokenizer = tokenize,
-lowercase = True,
-stop_words = 'english',
-max_features = 85
+    analyzer = 'word',
+    tokenizer = tokenize,
+    lowercase = True,
+    stop_words = 'english',
+    max_features = 85
 )
 ```
 
@@ -1125,10 +1125,10 @@ Next, we use the `fit_transform()` method to transform our corpus data into feat
 
 ``` python
 features = vectorizer.fit_transform(
-train_data_df.Text.tolist() + test_data_df.Text.tolist())
+                          train_data_df.Text.tolist() + test_data_df.Text.tolist())
 ```
 
-Here, we're simply converting the features to an array for easier use.
+Here, we're simply converting the features to an array so we have an easier data structure to use.
 
 ``` python
 features_nd = features.toarray()
@@ -1138,16 +1138,16 @@ features_nd = features.toarray()
 
 Finally, we begin building our classifier. Earlier we learned what a bag-of-words model. Here, we'll be using a similar model, but with some modifications. To refresh your mind, this kind of model simplifies text to a multi-set of terms frequencies. 
 
-So first we'll split our training data to get an evaluation set. As we mentioned before, we'll use cross validation to split the data. sklearn has a built-in method that will do this for us. All we need to do is provide the data and assign a training percentage (in this case, 75%).
+So first we'll split our training data to get an evaluation set. As we mentioned before, we'll use cross validation to split the data. sklearn has a built-in method that will do this for us. All we need to do is provide the data and assign a training percentage (in this case, 85%).
 
 ``` python
 from sklearn.cross_validation import train_test_split
 
 X_train, X_test, y_train, y_test  = train_test_split(
-features_nd[0:len(train_data_df)], 
-train_data_df.Sentiment,
-train_size=0.85, 
-random_state=1234)
+       features_nd[0:len(train_data_df)], 
+       train_data_df.Sentiment,
+       train_size=0.85, 
+       random_state=1234)
 ```
 
 Now we're ready to train our classifier. We'll be using Logistic Regression to model this data. Once again, sklearn has a built-in model for you to use, so we begin by importing the needed modules and calling the class.  
@@ -1222,7 +1222,7 @@ And lastly, let's actually look at our predictions! Using the random module to s
 import random
 spl = random.sample(range(len(test_pred)), 10)
 for text, sentiment in zip(test_data_df.Text[spl], test_pred[spl]):
-print (sentiment, text)
+    print(sentiment, text)
 ```
 
 Recall that 0 indicates a negative sentence and 1 indicates a positive:
